@@ -2,230 +2,235 @@
 
 ## Class documentation
 
-### Playground
-	Playground is main class and sort of game container, which holds one instance of Canvas class.
-#### Constructor:
-```
+```ruby
+/**
+ ** Playground is main class and sort of game container, which holds one instance of Canvas class.
+ ** The Playground itself does not provide methods to control the properties of the game rendering and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas) function of every stored object (in all presented groups)
+ **/
+Class Playground {
 	Playground(Canvas canvas)
-```
-#### Properties:
-	canvas
-	timeDelta
-	FPS
-#### Methods:
-	putObject(Object object, [Symbol groupSymbol])
-	removeObject(objToRemove, groupSymbol)
-	clearObjects()
-	clearAllObjects()
-	createCustomGroup(groupSymbol)
-	requestSortObjectsOnNextUpdate(predicate)
-#### Functionality:
-	The Playground itself does not provide methods to control the properties of the game rendering and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas) function of every stored object (in all presented groups)
 
-### Canvas
-	Represents the graphics container of game. All objects will be drawn here.
-#### Constructor:
+	Canvas canvas
+	Integer timeDelta
+	Integer FPS
+	
+	Void putObject(Object object, [Symbol groupSymbol])
+	Void removeObject(Object objToRemove, Symbol groupSymbol)
+	Void clearObjects()
+	Void clearAllObjects()
+	Void createCustomGroup(Symbol groupSymbol)
+	Void requestSortObjectsOnNextUpdate(Function sortFunction)
+}
+
+/**
+ ** Represents the graphics container of game. All objects will be drawn here.
+ **/
+Class Canvas {
 	Canvas(String canvasId, [String fillcolor = "white"])
-#### Properties:
-	playground
-	width
-	height
-	fillcolor
-#### Methods:
-	expandToParent()
-	setWidth(Integer width)
-	setHeight(Integer height)
-	setScale(Integer scaleX, Integer scaleY)
-	setTranslation(Integer translateX, Integer translateY)
-	getHexColor(Integer x, Integer y)
-	clear()
-	fill(String color)
-#### Functionality:
-	//TODO
 
-### Timer
-	//TODO
-#### Constructor:
+	Playground playground
+	Integer width
+	Integer height
+	String fillcolor
+	
+	Void expandToParent()
+	Void setWidth(Integer width)
+	Void setHeight(Integer height)
+	Void setScale(Integer scaleX, Integer scaleY)
+	Void setTranslation(Integer translateX, Integer translateY)
+	String getHexColor(Integer x, Integer y)
+	Void clear()
+	Void fill(String color)
+}
+
+/**
+ ** 
+ **/
+Class Timer {
 	Timer(Integer interval, [Function callback(canvas)])
-#### Properties:
-	interval
-	callback
-	active
-#### Methods:
-	stopTimer()
-	startTimer()
-#### Functionality:
-	//TODO
 
-### Interface Shape extends ObjectWidthHashCode
-#### Methods:
-	intersects(shape)
-	contains(shape)
+	Integer interval
+	Function callback
+	Boolean active
 	
-Circle extends Shape
-	//TODO
-#### Constructor:
+	Void stopTimer()
+	Void startTimer()
+}
+
+/**
+ ** 
+ **/
+Interface Shape extends ObjectWidthHashCode {
+	Boolean intersects(Shape shape)
+	Boolean contains(Shape shape)
+}
+
+/**
+ ** 
+ **/
+Class Circle extends Shape {
 	Circle(Integer x, Integer y, Integer radius, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
-#### Properties:
-	x
-	y
-	radius
-	fillcolor
-	linewidth
-	linecolor
-#### Methods:
-	preRenderImage()	
-	setFillcolor(fillcolor)
-	getCenterX()
-	getCenterY()
-	setCenterX(x)
-	setCenterY(y)
-	render(canvas)
-#### Functionality:
-	//TODO
-	
-### Rectangle extends Shape
-	//TODO
-#### Constructor:
+
+	Integer x
+	Integer y
+	Integer radius
+	String fillcolor
+	Integer linewidth
+	String linecolor
+
+	Void setFillcolor(String fillcolor)
+	Integer getCenterX()
+	Integer getCenterY()
+	Void setCenterX(Integer x)
+	Void setCenterY(Integer y)
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class Rectangle extends Shape {
 	Rectangle(Integer x, Integer y, Integer width, Integer height, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
-#### Properties:
-	x
-	y
-	height
-	width
-	fillcolor
-	linewidth
-	linecolor
-#### Methods:
-	setFillcolor(fillcolor)
-	getCenterX()
-	getCenterY()
-	setCenterX(x)
-	setCenterY(y)
-	setWidth(width)
-	setHeight(height)
-	render(canvas)
-#### Functionality:
-	//TODO
+	
+	Integer x
+	Integer y
+	Integer height
+	Integer width
+	String fillcolor
+	Integer linewidth
+	String linecolor
 
-### Picture extends ObjectWidthHashCode
-	//TODO
-#### Constructor:
+	Void setFillcolor(String fillcolor)
+	Integer getCenterX()
+	Integer getCenterY()
+	Void setCenterX(Integer x)
+	Void setCenterY(Integer y)
+	Void setWidth(Integer width)
+	Void setHeight(Integer height)
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class Picture extends ObjectWidthHashCode {
 	Picture(Integer x, Integer y, String src)
-#### Properties:
-	x
-	y
-	src
-	picture
-	stretch
-	loaded
-#### Methods:
-	getHexColor(x, y)
-	render(canvas)
-#### Functionality:
-	//TODO
 
-### SpriteAnimation extends ObjectWidthHashCode
-	//TODO
-#### Constructor:
+	Integer x
+	Integer y
+	String src
+	Image picture
+	Boolean stretch
+	Boolean loaded
+
+	Integer getHexColor(x, y)
+	Void render(canvas)
+}
+
+/**
+ ** 
+ **/
+Class SpriteAnimation extends ObjectWidthHashCode {
 	SpriteAnimation(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, Integer partsCount, Integer offsetX, Integer offsetY, [Integer frameTime=250, Boolean flipped=false])
-#### Properties:
-	x
-	y
-	src
-	startX
-	startY
-	partWidth
-	partHeight
-	partsCount
-	offsetX
-	offsetY
-	frameTime
-	flipped
-	currentPart
-	callback
-#### Methods:
-	resetSequence()
-	setCallback(callback)
-	render(canvas)
-#### Functionality:
-	//TODO
 
-### SpriteStatic extends ObjectWidthHashCode
-	//TODO
-#### Constructor:
+	Integer x
+	Integer y
+	String src
+	Integer startX
+	Integer startY
+	Integer partWidth
+	Integer partHeight
+	Integer partsCount
+	Integer offsetX
+	Integer offsetY
+	Integer frameTime
+	Boolean flipped
+	Integer currentPart
+	Function callback
+
+	Void resetSequence()
+	Void setCallback(Function callback)
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class SpriteStatic extends ObjectWidthHashCode {
 	SpriteStatic(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, [Boolean flipped=false])
-#### Properties:
-	x
-	y
-	src
-	startX
-	startY
-	partWidth
-	partHeight
-	flipped
-#### Methods:
-	render(canvas)
-#### Functionality:
-	//TODO
 
-### StaticText extends ObjectWidthHashCode
-	//TODO
-#### Constructor:
+	Integer x
+	Integer y
+	String src
+	Integer startX
+	Integer startY
+	Integer partWidth
+	Integer partHeight
+	Boolean flipped
+	
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class StaticText extends ObjectWidthHashCode {
 	StaticText(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
-#### Properties:
-	x
-	y
-	text
-	font
-	fillcolor
-	linewidth
-	linecolor
-	width
-	height
-#### Methods:
-	setText(text)
-	setFont(font)
-	setCenterX(x)
-	render(canvas)
-#### Functionality:
-	//TODO
 
-### Text extends ObjectWidthHashCode
-	//TODO
-#### Constructor:
+	Integer x
+	Integer y
+	String text
+	String font
+	String fillcolor
+	Integer linewidth
+	String linecolor
+	Integer width
+	Integer height
+
+	Void setText(String text)
+	Void setFont(String font)
+	Void setCenterX(Integer x)
+	Void setCenterY(Integer y)
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class Text extends ObjectWidthHashCode {
 	Text(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
-#### Properties:
-	x
-	y
-	text
-	font
-	fillcolor
-	linewidth
-	linecolor
-	width
-	height
-#### Methods:
-	setText(text)
-	setFont(font)
-	setFillColor(fillcolor)
-	setCenterX(x)
-	setCenterY(y)
-#### Functionality:
-	//TODO
 
-### InputManager
-	//TODO
-#### Constructor:
-	InputManager(Playground playground)
-#### Properties:
-	mouseX
-	mouseY
-	playground
-#### Methods:
-	keyDown(keyCode)
-	keyPressed(keyCode)
-	mouseDown(keyCode)
-	mousePressed(keyCode)
-#### Functionality:
-	//TODO
+	Integer x
+	Integer y
+	String text
+	String font
+	String fillcolor
+	Integer linewidth
+	String linecolor
+	Integer width
+	Integer height
+Methods:
+	Void setText(String text)
+	Void setFont(String font)
+	Void setFillColor(String fillcolor)
+	Void setCenterX(Integer x)
+	Void setCenterY(Integer y)
+	Void render(Canvas canvas)
+}
+
+/**
+ ** 
+ **/
+Class InputManager {
+InputManager(Playground playground)
+
+	Integer mouseX
+	Integer mouseY
+	Playground playground
+	
+	Boolean keyDown(String keyCode)
+	Boolean keyPressed(String keyCode)
+	Boolean mouseDown(String keyCode)
+	Boolean mousePressed(String keyCode)
+}
+```
