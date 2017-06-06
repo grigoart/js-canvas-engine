@@ -3,10 +3,9 @@
 ## Class documentation
 
 ```ruby
-/**
- ** Playground is main class and sort of game container, which holds one instance of Canvas class.
- ** The Playground itself does not provide methods to control the properties of the game rendering and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas) function of every stored object (in all presented groups)
- **/
+# Playground is main class and sort of game container, which holds one instance of Canvas class.
+# The Playground itself does not provide methods to control the properties of the game rendering and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas) function of every stored object (in all presented groups)
+#
 Class Playground {
 	Playground(Canvas canvas)
 
@@ -22,9 +21,8 @@ Class Playground {
 	Void requestSortObjectsOnNextUpdate(Function sortFunction)
 }
 
-/**
- ** Represents the graphics container of game. All objects will be drawn here.
- **/
+# Represents the graphics container of game. All objects will be drawn here.
+#
 Class Canvas {
 	Canvas(String canvasId, [String fillcolor = "white"])
 
@@ -43,9 +41,9 @@ Class Canvas {
 	Void fill(String color)
 }
 
-/**
- ** 
- **/
+# Timer object. Calls callback function every <interval> milliseconds.
+# Should be started after creation and be updated.
+#
 Class Timer {
 	Timer(Integer interval, [Function callback(canvas)])
 
@@ -54,20 +52,20 @@ Class Timer {
 	Boolean active
 	
 	Void stopTimer()
-	Void startTimer()
+	This startTimer()
 }
 
-/**
- ** 
- **/
-Interface Shape extends ObjectWidthHashCode {
+# Abstract class representing shape.
+# Provide functions intersects and contains(shapeT) to determine(shapeT), if this shape intersects or contains <shapeT>
+#
+Abstract Class Shape extends ObjectWidthHashCode {
 	Boolean intersects(Shape shape)
 	Boolean contains(Shape shape)
 }
 
-/**
- ** 
- **/
+# Circle shape.
+# Can be rendered if needed.
+#
 Class Circle extends Shape {
 	Circle(Integer x, Integer y, Integer radius, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
 
@@ -86,9 +84,9 @@ Class Circle extends Shape {
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Rectangle shape.
+# Can be rendered if needed.
+#
 Class Rectangle extends Shape {
 	Rectangle(Integer x, Integer y, Integer width, Integer height, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
 	
@@ -110,9 +108,8 @@ Class Rectangle extends Shape {
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Object to represent external picture on canvas.
+#
 Class Picture extends ObjectWidthHashCode {
 	Picture(Integer x, Integer y, String src)
 
@@ -127,9 +124,9 @@ Class Picture extends ObjectWidthHashCode {
 	Void render(canvas)
 }
 
-/**
- ** 
- **/
+# Object to work with animation in spritesheet format.
+# Callback function will be called on the end of animation.
+#
 Class SpriteAnimation extends ObjectWidthHashCode {
 	SpriteAnimation(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, Integer partsCount, Integer offsetX, Integer offsetY, [Integer frameTime=250, Boolean flipped=false])
 
@@ -153,9 +150,8 @@ Class SpriteAnimation extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Object to render part of image
+#
 Class SpriteStatic extends ObjectWidthHashCode {
 	SpriteStatic(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, [Boolean flipped=false])
 
@@ -171,9 +167,9 @@ Class SpriteStatic extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Static text. Should be changed very rarely.
+# Fast render, property changes rerender prerendered object.
+#
 Class StaticText extends ObjectWidthHashCode {
 	StaticText(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
 
@@ -194,9 +190,9 @@ Class StaticText extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Text to draw in canvas.
+# Fast property changes, slower rendering than StaticText.
+#
 Class Text extends ObjectWidthHashCode {
 	Text(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
 
@@ -209,7 +205,7 @@ Class Text extends ObjectWidthHashCode {
 	String linecolor
 	Integer width
 	Integer height
-Methods:
+
 	Void setText(String text)
 	Void setFont(String font)
 	Void setFillColor(String fillcolor)
@@ -218,9 +214,10 @@ Methods:
 	Void render(Canvas canvas)
 }
 
-/**
- ** 
- **/
+# Used for working with user inputs such as mouse and keyboard.
+# Provides arrays of pressed keys and pressed mouse buttons.
+# Also provides mouse position [x, y] on canvas element.
+#
 Class InputManager {
 InputManager(Playground playground)
 
