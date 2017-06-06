@@ -4,9 +4,11 @@
 
 ```ruby
 # Playground is main class and sort of game container, which holds one instance of Canvas class.
-# The Playground itself does not provide methods to control the properties of the game rendering and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas) function of every stored object (in all presented groups)
+# The Playground itself does not provide methods to control the properties of the game rendering
+# and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas)
+# function of every stored object (in all presented groups)
 #
-Class Playground {
+class Playground {
 	Playground(Canvas canvas)
 
 	Canvas canvas
@@ -23,7 +25,7 @@ Class Playground {
 
 # Represents the graphics container of game. All objects will be drawn here.
 #
-Class Canvas {
+class Canvas {
 	Canvas(String canvasId, [String fillcolor = "white"])
 
 	Playground playground
@@ -44,7 +46,7 @@ Class Canvas {
 # Timer object. Calls callback function every <interval> milliseconds.
 # Should be started after creation and be updated.
 #
-Class Timer {
+class Timer {
 	Timer(Integer interval, [Function callback(canvas)])
 
 	Integer interval
@@ -55,10 +57,11 @@ Class Timer {
 	This startTimer()
 }
 
-# Abstract class representing shape.
-# Provide functions intersects and contains(shapeT) to determine(shapeT), if this shape intersects or contains <shapeT>
+# abstract class representing shape.
+# Provide functions intersects and contains(shapeT) to determine(shapeT),
+# if this shape intersects or contains <shapeT>
 #
-Abstract Class Shape extends ObjectWidthHashCode {
+abstract class Shape extends ObjectWidthHashCode {
 	Boolean intersects(Shape shape)
 	Boolean contains(Shape shape)
 }
@@ -66,8 +69,9 @@ Abstract Class Shape extends ObjectWidthHashCode {
 # Circle shape.
 # Can be rendered if needed.
 #
-Class Circle extends Shape {
-	Circle(Integer x, Integer y, Integer radius, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
+class Circle extends Shape {
+	Circle(Integer x, Integer y, Integer radius, [String fillcolor="black",
+		Integer linewidth=0, String linecolor="black"])
 
 	Integer x
 	Integer y
@@ -87,8 +91,9 @@ Class Circle extends Shape {
 # Rectangle shape.
 # Can be rendered if needed.
 #
-Class Rectangle extends Shape {
-	Rectangle(Integer x, Integer y, Integer width, Integer height, [String fillcolor="black", Integer linewidth=0, String linecolor="black"])
+class Rectangle extends Shape {
+	Rectangle(Integer x, Integer y, Integer width, Integer height,
+		[String fillcolor="black", Integer linewidth=0, String linecolor="black"])
 	
 	Integer x
 	Integer y
@@ -110,7 +115,7 @@ Class Rectangle extends Shape {
 
 # Object to represent external picture on canvas.
 #
-Class Picture extends ObjectWidthHashCode {
+class Picture extends ObjectWidthHashCode {
 	Picture(Integer x, Integer y, String src)
 
 	Integer x
@@ -127,8 +132,10 @@ Class Picture extends ObjectWidthHashCode {
 # Object to work with animation in spritesheet format.
 # Callback function will be called on the end of animation.
 #
-Class SpriteAnimation extends ObjectWidthHashCode {
-	SpriteAnimation(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, Integer partsCount, Integer offsetX, Integer offsetY, [Integer frameTime=250, Boolean flipped=false])
+class SpriteAnimation extends ObjectWidthHashCode {
+	SpriteAnimation(Integer x, Integer y, String src, Integer startX, Integer startY,
+		Integer partWidth, Integer partHeight, Integer partsCount, Integer offsetX,
+		Integer offsetY, [Integer frameTime=250, Boolean flipped=false])
 
 	Integer x
 	Integer y
@@ -152,8 +159,9 @@ Class SpriteAnimation extends ObjectWidthHashCode {
 
 # Object to render part of image
 #
-Class SpriteStatic extends ObjectWidthHashCode {
-	SpriteStatic(Integer x, Integer y, String src, Integer startX, Integer startY, Integer partWidth, Integer partHeight, [Boolean flipped=false])
+class SpriteStatic extends ObjectWidthHashCode {
+	SpriteStatic(Integer x, Integer y, String src, Integer startX, Integer startY,
+		Integer partWidth, Integer partHeight, [Boolean flipped=false])
 
 	Integer x
 	Integer y
@@ -170,8 +178,9 @@ Class SpriteStatic extends ObjectWidthHashCode {
 # Static text. Should be changed very rarely.
 # Fast render, property changes rerender prerendered object.
 #
-Class StaticText extends ObjectWidthHashCode {
-	StaticText(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
+class StaticText extends ObjectWidthHashCode {
+	StaticText(Integer x, Integer y, String text, [String font="16px Arial",
+		String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
 
 	Integer x
 	Integer y
@@ -193,8 +202,9 @@ Class StaticText extends ObjectWidthHashCode {
 # Text to draw in canvas.
 # Fast property changes, slower rendering than StaticText.
 #
-Class Text extends ObjectWidthHashCode {
-	Text(Integer x, Integer y, String text, [String font="16px Arial", String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
+class Text extends ObjectWidthHashCode {
+	Text(Integer x, Integer y, String text, [String font="16px Arial",
+		String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
 
 	Integer x
 	Integer y
@@ -218,8 +228,8 @@ Class Text extends ObjectWidthHashCode {
 # Provides arrays of pressed keys and pressed mouse buttons.
 # Also provides mouse position [x, y] on canvas element.
 #
-Class InputManager {
-InputManager(Playground playground)
+class InputManager {
+	InputManager(Playground playground)
 
 	Integer mouseX
 	Integer mouseY
