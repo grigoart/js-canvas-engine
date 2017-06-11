@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSGE</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/highlight.min.css" />
+		<style>
+			.codeBlock {
+				padding: 1em;
+			}
+			.contentBox {
+			    align-items: stretch;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="flexBody">
+			<div class="sideBar">
+				<!-- MENU WILL BE IMPORTED BY importMenu.js -->
+			</div>
+			<div class="contentBox">
+<pre class="codeBlock"><code class="js">
+/*
+	Initializing example:
+		1) Create Canvas instance. Constructor argument: id of canvas on the page;
+		2) Create Playground instance. Constructor argument: instance of Canvas;
+		3) Playground instance contains InputManager instance, which can be used for work with user inputs
+*/
+
+//Create Canvas instance. Constructor argument: id of canvas on the page
+const CANVAS = new Canvas("canvas")
+
+//Create Playground instance. Constructor argument: instance of Canvas
+const PLAYGROUND = new Playground(CANVAS)
+
+//Playground instance contains InputManager instance, which can be used for work with user inputs
+const INPUT_MANAGER = PLAYGROUND.inputManager
+
+</code></pre>
+			</div>
+		</div>
+
+		<script src="js/importMenu.js"></script>
+		<script src="js/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad()</script>
+	</body>
+</html>
