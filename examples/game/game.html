@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSGE</title>
+		<meta charset="utf-8" /> 
+		<script src="../js/engine.js"></script>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="canvas-holder">
+				<canvas id="canvas" width="800" height="600"></canvas>
+			</div>
+			<div id="info-holder">
+				<div id="console">
+					<h3> ===============&nbsp;SETTINGS&nbsp;============= </h3>
+					<div><input id="noDamage" name="noDamage" type="checkbox" /><label for="noDamage">No damage</label></div>
+					<div><input id="drawSprites" name="drawSprites" type="checkbox" checked /><label for="drawSprites">Draw sprites</label></div>
+					<div><input id="drawShapes" name="drawShapes" type="checkbox" /><label for="drawShapes">Draw shapes</label></div>
+					<h3> ===============&nbsp;PLAYER&nbsp;=============== </h3>
+					<div id="playerCoords"></div>
+					<div id="playerDirection"></div>
+					<div id="playerDead"></div>
+					<div id="playerCanWalk"></div>
+					<div id="playerCanAttack"></div>
+					<h3> ===============&nbsp;GAME&nbsp;================= </h3>
+					<div id="fpsMeter"></div>
+					<div id="objectCount"></div>
+					<h3> ===============&nbsp;INPUT&nbsp;================ </h3>
+					<div id="mouseCoords"></div>
+					<div id="mBtnsDown"></div>
+					<div id="keysDown"></div>
+				</div>
+			</div>
+		</div>
+		<script src="game.js"></script>
+	</body>
+</html>
