@@ -5,19 +5,21 @@ const hintStyle = (backColor="#000000")=>`
 		position: absolute;
 		left: -15.5em;
 		top: 2%;
+		-webkit-transition: 0.25s;
 		transition: 0.25s;
 		padding: 1em 0.25em;
 	}
 	.hint {
 		visibility: visible;
 		opacity: 1;
+		-webkit-transition: opacity 2s linear;
 		transition: opacity 2s linear;
 		width: 12em;
 		color: #FFFFFF;
-		background: ${backColor};
 		height: 30px;
 		line-height: 30px;
 		text-align: center;
+		background: ${backColor};
 	}
 	.hint:after {
 		content: '';
@@ -26,13 +28,14 @@ const hintStyle = (backColor="#000000")=>`
 		left: 100%;
 		margin-top: -1em;
 		width: 0; height: 0;
-		border-left: 1em solid ${backColor};
 		border-top: 1em solid transparent;
+		border-left: 1em solid ${backColor};
 		border-bottom: 1em solid transparent;
 	}
 	.hint.hide {
 		visibility: hidden;
 		opacity: 0;
+		-webkit-transition: visibility 0s 1s, opacity 1s linear;
 		transition: visibility 0s 1s, opacity 1s linear;
 	}
 	.bounce {
