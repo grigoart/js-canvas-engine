@@ -1,5 +1,31 @@
 # JSCanvasEngine
 
+JSCanvasEngine is a simple open source HTML5 game framework (based on canvas element). At this point supports desktop and mobile web browsers, but does not support touches. Written completely in plain JavaScript. 
+
+Folder "examples" contains pages with examples of using functionality of framework (see [link](http://google.com)).
+
+[Game example #1]()
+
+[Game example #2]()
+
+[Komentáře k semestrálnímu projektu]()
+
+## Hello world
+
+```html
+<script src="engine.js"></script>
+
+<canvas id="canvasId" width="100" height="20"></canvas>
+```
+
+```js
+const CANVAS = new Canvas("canvasId")
+const PLAYGROUND = new Playground(CANVAS)
+const INPUT_MANAGER = PLAYGROUND.inputManager
+
+PLAYGROUND.putObject(new Text(0, 0, "Hello World"))
+```
+
 ## Class documentation
 
 ```ruby
@@ -12,8 +38,8 @@ class Playground {
 	Playground(Canvas canvas)
 
 	Canvas canvas
-	Integer timeDelta
-	Integer FPS
+	Float timeDelta
+	Float FPS
 	
 	Void putObject(Object object, [Symbol groupSymbol])
 	Void removeObject(Object objToRemove, Symbol groupSymbol)
@@ -23,22 +49,22 @@ class Playground {
 	Void requestSortObjectsOnNextUpdate(Function sortFunction)
 }
 
-# Represents the graphics container of game. All objects will be drawn here.
+# Represents the graphics container for the game. All objects will be drawn here.
 #
 class Canvas {
 	Canvas(String canvasId, [String fillcolor = "white"])
 
 	Playground playground
-	Integer width
-	Integer height
+	Float width
+	Float height
 	String fillcolor
 	
 	Void expandToParent()
-	Void setWidth(Integer width)
-	Void setHeight(Integer height)
-	Void setScale(Integer scaleX, Integer scaleY)
-	Void setTranslation(Integer translateX, Integer translateY)
-	String getHexColor(Integer x, Integer y)
+	Void setWidth(Float width)
+	Void setHeight(Float height)
+	Void setScale(Float scaleX, Float scaleY)
+	Void setTranslation(Float translateX, Float translateY)
+	String getHexColor(Float x, Float y)
 	Void clear()
 	Void fill(String color)
 }
@@ -47,9 +73,9 @@ class Canvas {
 # Should be started after creation and be updated.
 #
 class Timer {
-	Timer(Integer interval, [Function callback(canvas)])
+	Timer(Float interval, [Function callback(canvas)])
 
-	Integer interval
+	Float interval
 	Function callback
 	Boolean active
 	
@@ -57,9 +83,15 @@ class Timer {
 	This startTimer()
 }
 
-# abstract class representing shape.
-# Provide functions intersects and contains(shapeT) to determine(shapeT),
-# if this shape intersects or contains <shapeT>
+# Every object, that extends ObjectWidthHashCode will have own hashCode
+#
+class ObjectWidthHashCode {
+	String hashCode
+}
+
+# Abstract class representing shape.
+# Provide functions intersects(shapeT) and contains(shapeT) to say,
+# if <this> shape intersects or contains <shapeT>
 #
 abstract class Shape extends ObjectWidthHashCode {
 	Boolean intersects(Shape shape)
@@ -70,21 +102,21 @@ abstract class Shape extends ObjectWidthHashCode {
 # Can be rendered if needed.
 #
 class Circle extends Shape {
-	Circle(Integer x, Integer y, Integer radius, [String fillcolor="black",
-		Integer linewidth=0, String linecolor="black"])
+	Circle(Float x, Float y, Float radius, [String fillcolor="black",
+		Float linewidth=0, String linecolor="black"])
 
-	Integer x
-	Integer y
-	Integer radius
+	Float x
+	Float y
+	Float radius
 	String fillcolor
-	Integer linewidth
+	Float linewidth
 	String linecolor
 
 	Void setFillcolor(String fillcolor)
-	Integer getCenterX()
-	Integer getCenterY()
-	Void setCenterX(Integer x)
-	Void setCenterY(Integer y)
+	Float getCenterX()
+	Float getCenterY()
+	Void setCenterX(Float x)
+	Void setCenterY(Float y)
 	Void render(Canvas canvas)
 }
 
@@ -92,40 +124,40 @@ class Circle extends Shape {
 # Can be rendered if needed.
 #
 class Rectangle extends Shape {
-	Rectangle(Integer x, Integer y, Integer width, Integer height,
-		[String fillcolor="black", Integer linewidth=0, String linecolor="black"])
+	Rectangle(Float x, Float y, Float width, Float height,
+		[String fillcolor="black", Float linewidth=0, String linecolor="black"])
 	
-	Integer x
-	Integer y
-	Integer height
-	Integer width
+	Float x
+	Float y
+	Float height
+	Float width
 	String fillcolor
-	Integer linewidth
+	Float linewidth
 	String linecolor
 
 	Void setFillcolor(String fillcolor)
-	Integer getCenterX()
-	Integer getCenterY()
-	Void setCenterX(Integer x)
-	Void setCenterY(Integer y)
-	Void setWidth(Integer width)
-	Void setHeight(Integer height)
+	Float getCenterX()
+	Float getCenterY()
+	Void setCenterX(Float x)
+	Void setCenterY(Float y)
+	Void setWidth(Float width)
+	Void setHeight(Float height)
 	Void render(Canvas canvas)
 }
 
-# Object to represent external picture on canvas.
+# Object to represent picture from the URL on the canvas.
 #
 class Picture extends ObjectWidthHashCode {
-	Picture(Integer x, Integer y, String src)
+	Picture(Float x, Float y, String src)
 
-	Integer x
-	Integer y
+	Float x
+	Float y
 	String src
 	Image picture
 	Boolean stretch
 	Boolean loaded
 
-	Integer getHexColor(x, y)
+	Float getHexColor(x, y)
 	Void render(canvas)
 }
 
@@ -133,23 +165,23 @@ class Picture extends ObjectWidthHashCode {
 # Callback function will be called on the end of animation.
 #
 class SpriteAnimation extends ObjectWidthHashCode {
-	SpriteAnimation(Integer x, Integer y, String src, Integer startX, Integer startY,
-		Integer partWidth, Integer partHeight, Integer partsCount, Integer offsetX,
-		Integer offsetY, [Integer frameTime=250, Boolean flipped=false])
+	SpriteAnimation(Float x, Float y, String src, Float startX, Float startY,
+		Float partWidth, Float partHeight, Float partsCount, Float offsetX,
+		Float offsetY, [Float frameTime=250, Boolean flipped=false])
 
-	Integer x
-	Integer y
+	Float x
+	Float y
 	String src
-	Integer startX
-	Integer startY
-	Integer partWidth
-	Integer partHeight
-	Integer partsCount
-	Integer offsetX
-	Integer offsetY
-	Integer frameTime
+	Float startX
+	Float startY
+	Float partWidth
+	Float partHeight
+	Float partsCount
+	Float offsetX
+	Float offsetY
+	Float frameTime
 	Boolean flipped
-	Integer currentPart
+	Float currentPart
 	Function callback
 
 	Void resetSequence()
@@ -157,19 +189,19 @@ class SpriteAnimation extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-# Object to render part of image
+# Object to draw part of the image or spritesheet on the canvas.
 #
 class SpriteStatic extends ObjectWidthHashCode {
-	SpriteStatic(Integer x, Integer y, String src, Integer startX, Integer startY,
-		Integer partWidth, Integer partHeight, [Boolean flipped=false])
+	SpriteStatic(Float x, Float y, String src, Float startX, Float startY,
+		Float partWidth, Float partHeight, [Boolean flipped=false])
 
-	Integer x
-	Integer y
+	Float x
+	Float y
 	String src
-	Integer startX
-	Integer startY
-	Integer partWidth
-	Integer partHeight
+	Float startX
+	Float startY
+	Float partWidth
+	Float partHeight
 	Boolean flipped
 	
 	Void render(Canvas canvas)
@@ -179,48 +211,48 @@ class SpriteStatic extends ObjectWidthHashCode {
 # Fast render, property changes rerender prerendered object.
 #
 class StaticText extends ObjectWidthHashCode {
-	StaticText(Integer x, Integer y, String text, [String font="16px Arial",
-		String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
+	StaticText(Float x, Float y, String text, [String font="16px Arial",
+		String fillcolor="black", Float linewidth=5, Float linecolor="black"])
 
-	Integer x
-	Integer y
+	Float x
+	Float y
 	String text
 	String font
 	String fillcolor
-	Integer linewidth
+	Float linewidth
 	String linecolor
-	Integer width
-	Integer height
+	Float width
+	Float height
 
 	Void setText(String text)
 	Void setFont(String font)
-	Void setCenterX(Integer x)
-	Void setCenterY(Integer y)
+	Void setCenterX(Float x)
+	Void setCenterY(Float y)
 	Void render(Canvas canvas)
 }
 
-# Text to draw in canvas.
+# Text to draw on canvas.
 # Fast property changes, slower rendering than StaticText.
 #
 class Text extends ObjectWidthHashCode {
-	Text(Integer x, Integer y, String text, [String font="16px Arial",
-		String fillcolor="black", Integer linewidth=5, Integer linecolor="black"])
+	Text(Float x, Float y, String text, [String font="16px Arial",
+		String fillcolor="black", Float linewidth=5, Float linecolor="black"])
 
-	Integer x
-	Integer y
+	Float x
+	Float y
 	String text
 	String font
 	String fillcolor
-	Integer linewidth
+	Float linewidth
 	String linecolor
-	Integer width
-	Integer height
+	Float width
+	Float height
 
 	Void setText(String text)
 	Void setFont(String font)
 	Void setFillColor(String fillcolor)
-	Void setCenterX(Integer x)
-	Void setCenterY(Integer y)
+	Void setCenterX(Float x)
+	Void setCenterY(Float y)
 	Void render(Canvas canvas)
 }
 
@@ -231,8 +263,8 @@ class Text extends ObjectWidthHashCode {
 class InputManager {
 	InputManager(Playground playground)
 
-	Integer mouseX
-	Integer mouseY
+	Float mouseX
+	Float mouseY
 	Playground playground
 	
 	Boolean keyDown(String keyCode)
