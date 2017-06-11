@@ -1,0 +1,167 @@
+html, body {
+	height: 100vh;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	overflow-y: auto;
+}
+
+a, a:visited {
+	color: inherit;
+	text-decoration: none;
+}
+
+.flexBody {
+	width: 100%;
+    height: 100%;
+	
+	display: flex;
+    flex-direction: column;
+	overflow: auto;
+}
+
+.infoPanel {
+	position: fixed;
+	width: 90%;
+	height: 100%;
+	left: 100%;
+	height: 100%;
+	border-left: 1px solid #D7DBDD;
+	background-color: #e5f4ff;
+	padding: 1em 0.5em;
+	transition: 1s;
+	display: flex;
+	flex-direction: column;
+    box-sizing: border-box;
+}
+
+.infoPanelClose {
+	cursor: pointer;
+	position: absolute;
+	width: 2em;
+	height: 100%;
+	left: -2em;
+	top: 0;
+	background-color: rgba(175, 175, 200, 0.3);
+	transition: 0.25s;
+	padding-top: 3em;
+}
+
+.infoPanelClose:hover {
+	background-color: rgba(175, 175, 200, 0.7);
+	transition: 0.25s;
+}
+
+.infoPanel.opened {
+	left: 10%;
+	transition: 1s;
+}
+
+code {
+	width: 100%;
+	border: 1px solid #D7DBDD;
+}
+
+.codeBlock {
+	display: flex;
+	flex-grow: 1;
+    box-sizing: border-box;
+	margin: 0;
+}
+
+.infoBlock {
+	margin-bottom: 0.5em;
+}
+
+.infoPanelCloseText {
+	text-align: center;
+}
+
+.sideBar {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	order: 2;
+	
+	border-right: 1px solid #D7DBDD;
+	background-color: #F5FDFD;
+	width: 100%;
+    min-height: 625px;
+    box-sizing: border-box;
+}
+
+.contentBox {
+	flex-grow: 1;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	order: 1;
+}
+
+.sideBarElement {
+	padding: 10px 0;
+	color: #16A2D7;
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	border-bottom: 1px solid #EEF3F5;
+}
+
+.sideBarElement:hover {
+	background-color: #16A2D7;
+	color: #F5FDFD;
+	transition: 0.25s all;
+}
+
+.sideBar > :last-child .sideBarElement {
+	color: red;
+}
+
+.sideBarSubElement {
+	font-size: 16px;
+	font-weight: normal;
+}
+
+.sideBarElement.sideBarSelected {
+	color: black;
+	background-color: #EEF3F5;
+	transition: 0.25s all;
+}
+
+.sideBarElement.sideBarSelected:hover {
+	background-color: #16A2D7;
+	transition: 0.25s all;
+}
+
+@media (orientation: landscape) {
+	.sideBar {
+		order: 1;
+		width: 15%;
+	}
+	.sideBarElement {
+		padding: 5px 10px;
+		text-align: left;
+		border-bottom: none;
+	}
+	.sideBarSubElement {
+		padding-left: 25px;
+	}
+	.infoPanel.opened {
+		left: 50%;
+	}
+	.infoPanel {
+		width: 50%;
+	}
+	.flexBody {
+		height: 100%;
+		flex-direction: row;
+	}
+	.contentBox {
+		min-height: 625px;
+		min-width: 850px;
+	}
+	html, body {
+		overflow: hidden;
+	}
+}

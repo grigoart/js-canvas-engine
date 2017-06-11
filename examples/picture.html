@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>JSGE</title>
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/highlight.min.css" />
+	</head>
+	<body>
+		<div class="flexBody">
+			<div class="sideBar">
+				<!-- MENU WILL BE IMPORTED BY importMenu.js -->
+			</div>
+			<div class="contentBox">
+				<canvas id="canvas" width="800" height="600"></canvas>
+			</div>
+			<div class="infoPanel">
+			<div class="infoPanelClose"><div class="infoPanelCloseText">C<br />O<br />D<br />E<br /><br />A<br />N<br />D<br /><br />I<br />N<br />F<br />O</div></div>
+			<div class="infoBlock">CODE:</div>
+<pre class="codeBlock"><code class="js">
+const CANVAS = new Canvas("canvas")
+const PLAYGROUND = new Playground(CANVAS)
+const INPUT_MANAGER = PLAYGROUND.inputManager
+</code></pre>
+			</div>
+		</div>
+		<script src="js/importMenu.js"></script>
+		<script src="js/engine.js"></script>
+		<script src="js/loadCanvas.js"></script>
+		<script src="js/initHint.js"></script>
+		<script src="js/highlight.min.js"></script>
+		<script>hljs.initHighlightingOnLoad()</script>	</body>
+</html>
