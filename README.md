@@ -21,7 +21,6 @@ Folder "examples" contains pages with examples of using functionality of framewo
 ```js
 const CANVAS = new Canvas("canvasId")
 const PLAYGROUND = new Playground(CANVAS)
-const INPUT_MANAGER = PLAYGROUND.inputManager
 
 PLAYGROUND.putObject(new Text(0, 0, "Hello World"))
 ```
