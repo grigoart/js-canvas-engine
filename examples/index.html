@@ -21,7 +21,11 @@
 			<div class="contentBox">
 <pre class="codeBlock"><code class="js">
 /*
-	Initializing example:
+	Hello world example:
+*/
+
+/*
+	Initializing:
 		1) Create Canvas instance. Constructor argument: id of canvas on the page;
 		2) Create Playground instance. Constructor argument: instance of Canvas;
 		3) Playground instance contains InputManager instance, which can be used for work with user inputs
@@ -36,10 +40,12 @@ const PLAYGROUND = new Playground(CANVAS)
 //Playground instance contains InputManager instance, which can be used for work with user inputs
 const INPUT_MANAGER = PLAYGROUND.inputManager
 
+//Put text object
+PLAYGROUND.putObject(new Text(0, 0, "Hello World"))
+
 </code></pre>
 			</div>
 		</div>
-
 		<script src="js/importMenu.js"></script>
 		<script src="js/highlight.min.js"></script>
 		<script>hljs.initHighlightingOnLoad()</script>

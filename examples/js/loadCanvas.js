@@ -1,3 +1,4 @@
+//main function to init JSGE main components (Playground and Canvas)
 function initEngine() {
 	if (!CANVAS) CANVAS = new Canvas("canvas")
 	if (!PLAYGROUND) PLAYGROUND = new Playground(CANVAS)
@@ -11,6 +12,7 @@ function initEngine() {
 	PLAYGROUND.putObject(DEBUG, debugSymbol)
 }
 
+//function for containsAndIntersects page
 function containsAndIntersects() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -50,6 +52,7 @@ function containsAndIntersects() {
 	PLAYGROUND.putObject(controlledCircle)
 }
 
+//function for creatingShapes page
 function creatingShapes() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -75,6 +78,7 @@ function creatingShapes() {
 	}
 }
 
+//function for mouseControl page
 function mouseControl() {
 	initEngine()
 	let mouseInfoX = document.querySelector("#mouseInfoX")
@@ -107,6 +111,7 @@ function mouseControl() {
 	PLAYGROUND.putObject(controlledCircle)
 }
 
+//function for keyboardControl page
 function keyboardControl() {
 	initEngine()
 	DEBUG.update = ()=>{
@@ -140,6 +145,7 @@ function keyboardControl() {
 	PLAYGROUND.putObject(controlledCircle)
 }
 
+//function for timerCounter page
 function timerCounter() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -153,6 +159,7 @@ function timerCounter() {
 	PLAYGROUND.putObject(timer)
 }
 
+//function for timerEvent page
 function timerEvent() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -177,6 +184,7 @@ function timerEvent() {
 	PLAYGROUND.putObject(new MyShape(new Circle(250, 300, 120, "blue", 5), 200))
 }
 
+//function for text page
 function text() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -190,6 +198,7 @@ function text() {
 		PLAYGROUND.putObject(new Text(75, y, text, font, fillStyle, lineWidth, lineColor))
 }
 
+//function for picture page
 function picture() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -201,6 +210,7 @@ function picture() {
 	PLAYGROUND.putObject(pic)
 }
 
+//function for sprite page
 function sprite() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -236,6 +246,7 @@ function sprite() {
 	PLAYGROUND.putObject(pic)
 }
 
+//function for sorting page
 function sorting() {
 	initEngine()
 	DEBUG.update = ()=>{}
@@ -274,6 +285,7 @@ function sorting() {
 	}
 }
 
+//function for spaceShooter page
 function spaceShooter() {
 	initEngine()
 	let fpsInfo = document.querySelector("#fpsInfo")
@@ -451,6 +463,7 @@ function spaceShooter() {
 	}
 }
 
+//location page and function to execute
 const PAGES_AND_FUNCTIONS = {
 	"intersectsContains.html" : containsAndIntersects,
 	"creatingShapes.html" : creatingShapes,
@@ -467,12 +480,14 @@ const PAGES_AND_FUNCTIONS = {
 
 let CANVAS, PLAYGROUND, INPUT_MANAGER, DEBUG
 
+//parse location, find page title and add code example on the page
 let page = /\/([\.A-Za-z]+)$/gi.exec(location.href)[1]
 let initFunction = null
 if (PAGES_AND_FUNCTIONS.hasOwnProperty(page)) {
 	initFunction = PAGES_AND_FUNCTIONS[page]
 	initFunction()
 	
+	//add code example on the page
 	let functionAsString = initFunction.toString().replace(/\t/g, " ").replace(/^ /gm, "")
 	let startIndex = functionAsString.indexOf('//CUTLINE') + '//CUTLINE'.length
 	let lastIndex = functionAsString.lastIndexOf('}')

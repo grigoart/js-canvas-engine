@@ -1,3 +1,4 @@
+//style for hint box
 const hintStyle = (backColor="#000000")=>`
     .hint {
 		cursor: pointer;
@@ -62,6 +63,7 @@ const hintStyle = (backColor="#000000")=>`
 	}
 `
 
+//show hint box
 function showHint(text, backColor="#000000", dontShowAgain) {
 	let style = document.createElement("style")
 	style.innerHTML = hintStyle(backColor)
@@ -74,8 +76,10 @@ function showHint(text, backColor="#000000", dontShowAgain) {
 	document.querySelector(".infoPanel").insertBefore(element, document.querySelector(".infoPanelClose"))
 }
 
+//hint box will not be shown, if localStorage contains key hintNeeded == false
 if (localStorage.getItem("hintNeeded") != "false") showHint("Click for more info", "#000000", true)
 
+//hide hint box
 function closeHint(element, dontShowAgain) {
 	if (dontShowAgain) localStorage.setItem("hintNeeded", false)
 	element.classList.add("hide")
