@@ -2,14 +2,16 @@
 
 JSCanvasEngine is a simple open source HTML5 game framework (based on canvas element). At this point supports desktop and mobile web browsers, but does not support touches. Written completely in plain JavaScript. 
 
-Folder "examples" contains pages with examples of using functionality of framework (see [link](http://google.com)).
+Folder "examples" contains pages with examples of using functionality of framework (see [link](http://grigorian.hostmeinca.com/index.html)).
 
-## [Komentáře k semestrálnímu projektu]()
+## [Komentáře k semestrálnímu projektu](https://docs.google.com/spreadsheets/d/1K0EGHbYfYLEt9zwDzMgfLaLZOTxZYmSQFMFLP6h6bXM/edit?usp=sharing)
 
-## [Game example #1]()
+## [Example pages](http://grigorian.hostmeinca.com/index.html)
+
+## [Game example #1](http://grigorian.hostmeinca.com/spaceShooter.html)
 ![Image of example 1](/pic/GE1.png)
 
-## [Game example #2]()
+## [Game example #2](http://grigorian.hostmeinca.com/game/game.html)
 ![Image of example 2](/pic/GE2.png)
 
 ## Hello world
@@ -24,7 +26,7 @@ Folder "examples" contains pages with examples of using functionality of framewo
 const CANVAS = new Canvas("canvasId")
 const PLAYGROUND = new Playground(CANVAS)
 
-PLAYGROUND.putObject(new Text(0, 0, "Hello World"))
+PLAYGROUND.putObject(new Text(9, 2, "Hello World"))
 ```
 
 ## Class documentation
