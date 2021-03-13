@@ -2,9 +2,7 @@
 
 JSCanvasEngine is a simple open source HTML5 game framework (based on canvas element). At this point supports desktop and mobile web browsers, but does not support touches. Written completely in plain JavaScript. 
 
-Folder "examples" contains pages with examples of using functionality of framework (see [link](http://grigorian.hostmeinca.com/index.html)).
-
-## [Komentáře k semestrálnímu projektu](https://docs.google.com/spreadsheets/d/1K0EGHbYfYLEt9zwDzMgfLaLZOTxZYmSQFMFLP6h6bXM/edit?usp=sharing)
+Folder "examples" contains pages with examples of using functionality of framework.
 
 ## [Example pages](http://grigorian.hostmeinca.com/index.html)
 
@@ -276,3 +274,5 @@ class InputManager {
 	Boolean mousePressed(String keyCode)
 }
 ```
+
+## [Komentáře k semestrálnímu projektu](https://docs.google.com/spreadsheets/d/1K0EGHbYfYLEt9zwDzMgfLaLZOTxZYmSQFMFLP6h6bXM/edit?usp=sharing)
