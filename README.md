@@ -9,7 +9,7 @@ Folder "examples" contains pages with examples of using functionality of framewo
 ## [Game example #1](http://grigorian.hostmeinca.com/spaceShooter.html)
 ![Image of example 1](/pic/GE1.png)
 
-## [Game example #2](http://grigorian.hostmeinca.com/game/game.html)
+## [Game example #2](https://grigoart.github.io/js-canvas-engine/examples/game/game.html)
 ![Image of example 2](/pic/GE2.png)
 
 ## Hello world
