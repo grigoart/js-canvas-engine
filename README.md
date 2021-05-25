@@ -4,9 +4,9 @@ JSCanvasEngine is a simple open source HTML5 game framework (based on canvas ele
 
 Folder "examples" contains pages with examples of using functionality of framework.
 
-## [Example pages](http://grigorian.hostmeinca.com/index.html)
+## [Example pages](https://grigoart.github.io/js-canvas-engine/examples)
 
-## [Game example #1](http://grigorian.hostmeinca.com/spaceShooter.html)
+## [Game example #1](https://grigoart.github.io/js-canvas-engine/examples/spaceShooter.html)
 ![Image of example 1](/pic/GE1.png)
 
 ## [Game example #2](https://grigoart.github.io/js-canvas-engine/examples/game/game.html)
