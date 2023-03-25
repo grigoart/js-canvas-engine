@@ -275,4 +275,4 @@ class InputManager {
 }
 ```
 
-## [Komentáře k semestrálnímu projektu](https://docs.google.com/spreadsheets/d/1K0EGHbYfYLEt9zwDzMgfLaLZOTxZYmSQFMFLP6h6bXM/edit?usp=sharing)
+<!-- ## [Komentáře k semestrálnímu projektu](https://docs.google.com/spreadsheets/d/1K0EGHbYfYLEt9zwDzMgfLaLZOTxZYmSQFMFLP6h6bXM/edit?usp=sharing) -->
