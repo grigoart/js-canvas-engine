@@ -87,6 +87,9 @@ code {
 .codeBlock {
 	margin: 0;
 	
+	overflow: auto;
+	height: 50%;
+	
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -95,7 +98,7 @@ code {
 	-ms-flex-positive: 1;
 	flex-grow: 1;
 	
-    -webkit-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
 }
 
