@@ -1,8 +1,8 @@
 # JSCanvasEngine
 
-JSCanvasEngine is a simple open source HTML5 game framework (based on canvas element). At this point supports desktop and mobile web browsers, but does not support touches. Written completely in plain JavaScript. 
+JSCanvasEngine is a simple open source HTML5 game framework (based on the canvas element). It currently supports desktop and mobile web browsers, but does not support touch. It is written entirely in a plain JavaScript.
 
-Folder "examples" contains pages with examples of using functionality of framework.
+The "examples" folder contains pages with examples of using the framework functions.
 
 ## [Example pages](https://grigoart.github.io/js-canvas-engine/examples)
 
@@ -30,10 +30,9 @@ PLAYGROUND.putObject(new Text(9, 2, "Hello World"))
 ## Class documentation
 
 ```ruby
-# Playground is main class and sort of game container, which holds one instance of Canvas class.
-# The Playground itself does not provide methods to control the properties of the game rendering
-# and update, but on every frame executes update(Canvas canvas) and then render(Canvas canvas)
-# function of every stored object (in all presented groups)
+# Playground is the main class and a kind of game container that contains one instance of the Canvas class.
+# Playground itself does not provide methods to control the rendering properties of the game, but instead
+# it executes `update(Canvas canvas)` and `render(Canvas canvas)` functions of each active object in all presented groups on each frame.
 #
 class Playground {
 	Playground(Canvas canvas)
@@ -50,7 +49,7 @@ class Playground {
 	Void requestSortObjectsOnNextUpdate(Function sortFunction)
 }
 
-# Represents the graphics container for the game. All objects will be drawn here.
+# Represents a graphical container for the game. All objects are rendered here.
 #
 class Canvas {
 	Canvas(String canvasId, [String fillcolor = "white"])
@@ -70,8 +69,8 @@ class Canvas {
 	Void fill(String color)
 }
 
-# Timer object. Calls callback function every <interval> milliseconds.
-# Should be started after creation and be updated.
+# Timer object. Calls the callback function every <interval> millisecond.
+# Expects to be started after creation and updated.
 #
 class Timer {
 	Timer(Float interval, [Function callback(canvas)])
@@ -84,15 +83,15 @@ class Timer {
 	This startTimer()
 }
 
-# Every object, that extends ObjectWidthHashCode will have own hashCode
+# Each object that extends ObjectWidthHashCode will have its own hashCode.
 #
 class ObjectWidthHashCode {
 	String hashCode
 }
 
-# Abstract class representing shape.
-# Provide functions intersects(shapeT) and contains(shapeT) to say,
-# if <this> shape intersects or contains <shapeT>
+# Abstract class representing a shape.
+# Provide functions `intersects(shapeT)` and `contains(shapeT)` that tell
+# whether the shape `<this>` intersects or contains the shape `<shapeT>`.
 #
 abstract class Shape extends ObjectWidthHashCode {
 	Boolean intersects(Shape shape)
@@ -100,7 +99,7 @@ abstract class Shape extends ObjectWidthHashCode {
 }
 
 # Circle shape.
-# Can be rendered if needed.
+# Represented by 2D coordinates and radius.
 #
 class Circle extends Shape {
 	Circle(Float x, Float y, Float radius, [String fillcolor="black",
@@ -122,7 +121,7 @@ class Circle extends Shape {
 }
 
 # Rectangle shape.
-# Can be rendered if needed.
+# Represented by 2D coordinates, width and height.
 #
 class Rectangle extends Shape {
 	Rectangle(Float x, Float y, Float width, Float height,
@@ -146,7 +145,7 @@ class Rectangle extends Shape {
 	Void render(Canvas canvas)
 }
 
-# Object to represent picture from the URL on the canvas.
+# Object for displaying an image from a URL on the canvas.
 #
 class Picture extends ObjectWidthHashCode {
 	Picture(Float x, Float y, String src)
@@ -162,8 +161,8 @@ class Picture extends ObjectWidthHashCode {
 	Void render(canvas)
 }
 
-# Object to work with animation in spritesheet format.
-# Callback function will be called on the end of animation.
+# Object for working with animation in spritesheet format.
+# The callback function will be called at the end of each animation cycle.
 #
 class SpriteAnimation extends ObjectWidthHashCode {
 	SpriteAnimation(Float x, Float y, String src, Float startX, Float startY,
@@ -190,7 +189,7 @@ class SpriteAnimation extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-# Object to draw part of the image or spritesheet on the canvas.
+# Object for drawing a part of an image or spritesheet on the canvas.
 #
 class SpriteStatic extends ObjectWidthHashCode {
 	SpriteStatic(Float x, Float y, String src, Float startX, Float startY,
@@ -208,8 +207,8 @@ class SpriteStatic extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-# Static text. Should be changed very rarely.
-# Fast render, property changes rerender prerendered object.
+# Static text. This object is expected to change very rarely or not at all.
+# Fast rendering, property changes redraw the pre-rendered object.
 #
 class StaticText extends ObjectWidthHashCode {
 	StaticText(Float x, Float y, String text, [String font="16px Arial",
@@ -232,7 +231,7 @@ class StaticText extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-# Text to draw on canvas.
+# Dynamic text.
 # Fast property changes, slower rendering than StaticText.
 #
 class Text extends ObjectWidthHashCode {
@@ -257,9 +256,9 @@ class Text extends ObjectWidthHashCode {
 	Void render(Canvas canvas)
 }
 
-# Used for working with user inputs such as mouse and keyboard.
-# Provides arrays of pressed keys and pressed mouse buttons.
-# Also provides mouse position [x, y] on canvas element.
+# Used to work with user inputs such as mouse and keyboard.
+# Provides an array of keystrokes and mouse button presses at each frame.
+# It also provides the mouse position [x, y] on the canvas element.
 #
 class InputManager {
 	InputManager(Playground playground)
